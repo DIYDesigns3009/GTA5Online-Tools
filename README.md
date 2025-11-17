@@ -17,17 +17,17 @@ A powerful AutoHotkey v2 script designed to provide various utilities and tools 
 
 ## 🖼️ Screenshots
 
-### UI - Full
+#### UI - Full
+<img src="_ReadMeResources/UI Full.png" raw=true alt="Subject Pronouns" style="margin-right: 10px;" />
 
+#### UI - Minimal
+<img src="_ReadMeResources/UI Minimal.png" raw=true alt="Subject Pronouns" style="margin-right: 10px;" />
 
-### UI - Minimal
+#### UI - Minimized
+<img src="_ReadMeResources/UI Minimized.png" raw=true alt="Subject Pronouns" style="margin-right: 10px;" />
 
-
-### UI - Minimized
-
-
-### UI - Full - In-Game
-
+#### UI - Full - In-Game
+<img src="_ReadMeResources/UI Full - In-Game.png" raw=true alt="Subject Pronouns" style="margin-right: 10px;" />
 
 -----
 
