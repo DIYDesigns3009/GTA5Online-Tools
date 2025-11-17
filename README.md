@@ -15,6 +15,22 @@ A powerful AutoHotkey v2 script designed to provide various utilities and tools 
 
 -----
 
+## 🖼️ Screenshots
+
+### UI - Full
+
+
+### UI - Minimal
+
+
+### UI - Minimized
+
+
+### UI - Full - In-Game
+
+
+-----
+
 ## 🛑 Requirements
 
 Before running this script, you **must** meet these requirements:
