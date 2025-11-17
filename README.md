@@ -59,7 +59,7 @@ Before running this script, you **must** meet these requirements:
 
 ## Credits
 
-  * The advanced `ToolTipOptions` class for the custom UI was originally created by **justme** on the AutoHotkey forums.
+  * The advanced `ToolTipOptions` class for the custom UI was originally created by **just me** on the **[AutoHotkey](https://www.autohotkey.com/boards/viewtopic.php?t=113308)** forums.
 
 ## 📜 Disclaimer
 
