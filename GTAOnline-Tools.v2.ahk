@@ -81,6 +81,7 @@ s_procExePath := ""
 s_isExeFound := false
 s_hideToolTipActive := false
 s_hideToolTipLevel := ToolTipHideLevel.MINIMAL
+s_tempShowToolTipEnable := false
 s_tempShowToolTip := false
 s_noSaveRuleActive := false
 s_exeBlockRuleActive := false
@@ -529,7 +530,7 @@ UpdateToolTip() {
 
 	; Determine if we should show the feature list
 	; Show if: Not in Hide Mode OR Temp Show is active
-	shouldShowDetails := (!s_hideToolTipActive || s_tempShowToolTip)
+	shouldShowDetails := (!s_hideToolTipActive || (s_tempShowToolTipEnable && s_tempShowToolTip))
 
 	if (shouldShowDetails) {
 		toolTipText .= "`n`n=== FEATURES =========================== Active? ="
@@ -618,18 +619,43 @@ UpdateToolTip() {
 		}
 	} else {
 		if (s_hideToolTipLevel = 2) {
-			activeFeatureFlags := [s_afkActive, s_autoClickActive, s_soloPublicSesPortBlockActive,
-				s_soloPublicSesProcSuspendActive, s_noSaveRuleActive, s_exeBlockRuleActive]
+			activeFeatureFlags := [
+				Map("NoAFK", s_afkActive),
+				Map("AutoClick", s_autoClickActive),
+				Map("SPSPort", s_soloPublicSesPortBlockActive),
+				Map("SPSSuspd", s_soloPublicSesProcSuspendActive),
+				Map("NoSave", s_noSaveRuleActive),
+				Map("ExeBlock", s_exeBlockRuleActive)
+			]
+			
+			activeFeatureNameShowMaxCount := 3
+			activeFeatureNames := 0
 			activeFeatureCount := 0
 			for (activeFeatureFlag in activeFeatureFlags) {
-				activeFeatureCount += activeFeatureFlag
+				for (name, flag in activeFeatureFlag) {
+					activeFeatureCount += flag
+					if (flag && activeFeatureCount <= activeFeatureNameShowMaxCount) {
+						if (activeFeatureNames) {
+							activeFeatureNames .= ","
+						} else {
+							activeFeatureNames := ""
+						}
+						activeFeatureNames .= name
+					}
+				}
+			}
+			if (activeFeatureCount > activeFeatureNameShowMaxCount) {
+				activeFeatureNames .= ",..."
 			}
 
 			; Minimized View
-			toolTipText .= "`n---- MINIMIZED ----"
+			;toolTipText .= "`n---- MINIMIZED ----"
 			;if (activeFeatureCount) {
-			toolTipText .= "`nActive Feature: " . activeFeatureCount
+			toolTipText .= "`nActive Features: " . activeFeatureCount
 			;}
+			if (activeFeatureCount) {
+				toolTipText .= "`n" . activeFeatureNames
+			}
 			toolTipText .= "`n"
 		}
 		toolTipText .= "Expand: [CTRL + F4]"
